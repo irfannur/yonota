@@ -81,7 +81,7 @@
         </div>
       </div>
 
-      <div ref="invoice" class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+      <div ref="invoice" class="bg-gray-50 p-6 rounded-xl shadow-md border border-gray-200">
         <div class="mb-4 flex flex-col gap-1">
           <h3 class="text-center text-2xl font-bold text-gray-600">{{ storeName }}</h3>
           <p v-if="storeAddress" class="text-center text-sm text-gray-600 mb-3"><span class="font-semibold">Alamat
