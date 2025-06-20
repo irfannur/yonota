@@ -81,31 +81,31 @@
         </div>
       </div>
 
-      <div ref="invoice" class="bg-gray-50 p-6 rounded-xl shadow-md border border-gray-200">
+      <div ref="invoice" class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
         <div class="mb-4 flex flex-col gap-1">
           <h3 class="text-center text-2xl font-bold text-gray-600">{{ storeName }}</h3>
           <p v-if="storeAddress" class="text-center text-sm text-gray-600 mb-3"><span class="font-semibold">Alamat
-              :</span> {{ storeAddress }}</p>
+          :</span> {{ storeAddress }}</p>
           <p class="text-sm text-gray-600"><span class="font-semibold">Tanggal :</span> {{
-            formatDateIndo(transactionDate) }}</p>
+        formatDateIndo(transactionDate) }}</p>
         </div>
         <table class="w-full text-sm border-t border-b border-gray-300">
           <thead class="bg-gray-100 text-gray-800">
-            <tr>
-              <th class="text-left p-2">Produk</th>
-              <th class="text-center p-2">Jml</th>
-              <th class="text-right p-2">Harga</th>
-              <th class="text-right p-2">Total</th>
-            </tr>
+        <tr>
+          <th class="text-left p-2">Produk</th>
+          <th class="text-center p-2">Jml</th>
+          <th class="text-right p-2">Harga</th>
+          <th class="text-right p-2">Total</th>
+        </tr>
           </thead>
           <tbody>
-            <tr v-for="(item, index) in products" :key="index" class="border-t border-gray-200">
-              <td class="p-2 text-gray-800">{{ item.name }}</td>
-              <td class="text-center p-2 text-gray-800">{{ item.qty }}</td>
-              <td class="text-right p-2 text-gray-800">Rp {{ formatCurrency(item.price) }}</td>
-              <td class="text-right p-2 text-gray-800">Rp {{ formatCurrency(item.qty * item.price) }}
-              </td>
-            </tr>
+        <tr v-for="(item, index) in products" :key="index" class="border-t border-gray-200">
+          <td class="p-2 text-gray-800">{{ item.name }}</td>
+          <td class="text-center p-2 text-gray-800">{{ item.qty }}</td>
+          <td class="text-right p-2 text-gray-800">Rp {{ formatCurrency(item.price) }}</td>
+          <td class="text-right p-2 text-gray-800">Rp {{ formatCurrency(item.qty * item.price) }}
+          </td>
+        </tr>
           </tbody>
         </table>
 
@@ -113,13 +113,12 @@
         </div>
         <div class="flex flex-wrap gap-2 mb-6">
           <div class="flex-1 flex flex-col items-end">
-            <div class="text-right font-bold text-gray-600">
-              Total: Rp {{ formatCurrency(grandTotal) }}
-            </div>
-            <div class="mt-2 text-right text-gray-600 font-semibold">Lunas</div>
+        <div class="text-right font-bold text-gray-600">
+          Total: Rp {{ formatCurrency(grandTotal) }}
+        </div>
+        <div class="mt-2 text-right text-gray-600 font-semibold">Lunas</div>
           </div>
         </div>
-
       </div>
     </div>
 
