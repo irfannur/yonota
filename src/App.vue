@@ -19,20 +19,20 @@
         </div>
       </div>
       <div class="grid gap-4 mb-6 sm:grid-cols-2">
-        <input v-model="storeName" type="text" placeholder="Store Name" class="input" />
+        <input v-model="storeName" type="text" placeholder="Nama Toko" class="input" />
         <input v-model="transactionDate" type="date" class="input" />
-        <input v-model="storeAddress" type="text" placeholder="Store Address" class="input sm:col-span-2" />
+        <input v-model="storeAddress" type="text" placeholder="Alamat Toko" class="input sm:col-span-2" />
       </div>
 
       <div class="mb-6">
         <h2
           class="text-lg font-semibold mb-2 text-gray-700 dark:text-gray-300 border-b border-blue-200 dark:border-blue-700 pb-1">
-          Product List</h2>
+          Produk</h2>
         <div v-for="(item, index) in products" :key="index"
           class="grid grid-cols-1 sm:grid-cols-5 gap-2 mb-2 items-center w-full bg-blue-50 dark:bg-gray-700 rounded-lg p-2">
-          <input v-model="item.name" placeholder="Product Name" class="input sm:col-span-2 w-full" />
-          <input v-model.number="item.qty" type="number" placeholder="Qty" class="input w-full" min="1" />
-          <input v-model="item.priceDisplay" @input="updatePrice(index)" placeholder="Price" class="input w-full" />
+          <input v-model="item.name" placeholder="Nama Produk" class="input sm:col-span-2 w-full" />
+          <input v-model.number="item.qty" type="number" placeholder="Jml" class="input w-full" min="1" />
+          <input v-model="item.priceDisplay" @input="updatePrice(index)" placeholder="Harga" class="input w-full" />
           <div class="flex justify-end w-full">
             <button @click="removeProduct(index)"
               class="btn btn-red flex items-center justify-center h-9 w-9 rounded-full shadow hover:scale-110 transition-transform duration-150"
@@ -85,27 +85,27 @@
         <div class="mb-4 flex flex-col gap-1">
           <h3 class="text-center text-2xl font-bold text-gray-600">{{ storeName }}</h3>
           <p v-if="storeAddress" class="text-center text-sm text-gray-600 mb-3"><span class="font-semibold">Alamat
-          :</span> {{ storeAddress }}</p>
+              :</span> {{ storeAddress }}</p>
           <p class="text-sm text-gray-600"><span class="font-semibold">Tanggal :</span> {{
-        formatDateIndo(transactionDate) }}</p>
+            formatDateIndo(transactionDate) }}</p>
         </div>
         <table class="w-full text-sm border-t border-b border-gray-300">
           <thead class="bg-gray-100 text-gray-800">
-        <tr>
-          <th class="text-left p-2">Produk</th>
-          <th class="text-center p-2">Jml</th>
-          <th class="text-right p-2">Harga</th>
-          <th class="text-right p-2">Total</th>
-        </tr>
+            <tr>
+              <th class="text-left p-2">Produk</th>
+              <th class="text-center p-2">Jml</th>
+              <th class="text-right p-2">Harga</th>
+              <th class="text-right p-2">Total</th>
+            </tr>
           </thead>
           <tbody>
-        <tr v-for="(item, index) in products" :key="index" class="border-t border-gray-200">
-          <td class="p-2 text-gray-800">{{ item.name }}</td>
-          <td class="text-center p-2 text-gray-800">{{ item.qty }}</td>
-          <td class="text-right p-2 text-gray-800">Rp {{ formatCurrency(item.price) }}</td>
-          <td class="text-right p-2 text-gray-800">Rp {{ formatCurrency(item.qty * item.price) }}
-          </td>
-        </tr>
+            <tr v-for="(item, index) in products" :key="index" class="border-t border-gray-200">
+              <td class="p-2 text-gray-800">{{ item.name }}</td>
+              <td class="text-center p-2 text-gray-800">{{ item.qty }}</td>
+              <td class="text-right p-2 text-gray-800">Rp {{ formatCurrency(item.price) }}</td>
+              <td class="text-right p-2 text-gray-800">Rp {{ formatCurrency(item.qty * item.price) }}
+              </td>
+            </tr>
           </tbody>
         </table>
 
@@ -113,10 +113,10 @@
         </div>
         <div class="flex flex-wrap gap-2 mb-6">
           <div class="flex-1 flex flex-col items-end">
-        <div class="text-right font-bold text-gray-600">
-          Total: Rp {{ formatCurrency(grandTotal) }}
-        </div>
-        <div class="mt-2 text-right text-gray-600 font-semibold">Lunas</div>
+            <div class="text-right font-bold text-gray-600">
+              Total: Rp {{ formatCurrency(grandTotal) }}
+            </div>
+            <div class="mt-2 text-right text-gray-600 font-semibold">Lunas</div>
           </div>
         </div>
       </div>
@@ -165,7 +165,7 @@ import { ref, computed, onMounted, watch } from 'vue'
 import html2pdf from 'html2pdf.js'
 import html2canvas from 'html2canvas'
 
-const storeName = ref('My Store')
+const storeName = ref('Warung Makan Yono')
 const storeAddress = ref('')
 const transactionDate = ref(new Date().toISOString().substr(0, 10))
 
