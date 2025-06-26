@@ -22,6 +22,7 @@
         <input v-model="storeName" type="text" placeholder="Nama Toko" class="input" />
         <input v-model="transactionDate" type="date" class="input" />
         <input v-model="storeAddress" type="text" placeholder="Alamat Toko" class="input sm:col-span-2" />
+        <input v-model="customerName" type="text" placeholder="Pelanggan" class="input sm:col-span-2" />
       </div>
 
       <div class="mb-6">
@@ -81,13 +82,15 @@
         </div>
       </div>
 
-      <div ref="invoice" class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+      <div ref="invoice" class="bg-white p-6 rounded-xl shadow-md border border-gray-200 relative">
         <div class="mb-4 flex flex-col gap-1">
           <h3 class="text-center text-2xl font-bold text-gray-600">{{ storeName }}</h3>
           <p v-if="storeAddress" class="text-center text-sm text-gray-600 mb-3"><span class="font-semibold">Alamat
               :</span> {{ storeAddress }}</p>
           <p class="text-sm text-gray-600"><span class="font-semibold">Tanggal :</span> {{
             formatDateIndo(transactionDate) }}</p>
+          <p v-if="customerName" class="text-sm text-gray-600"><span class="font-semibold">Pelanggan :</span> {{
+            customerName }}</p>
         </div>
         <table class="w-full text-sm border-t border-b border-gray-300">
           <thead class="bg-gray-100 text-gray-800">
@@ -119,6 +122,10 @@
             <div class="mt-2 text-right text-gray-600 font-semibold">Lunas</div>
           </div>
         </div>
+        
+        <div class="text-center text-gray-400 text-xs mt-4">
+          Dibuat dengan Yonota – {{ storeName }}.</div>
+
       </div>
     </div>
 
@@ -168,6 +175,7 @@ import html2canvas from 'html2canvas'
 const storeName = ref('Warung Makan Yono')
 const storeAddress = ref('')
 const transactionDate = ref(new Date().toISOString().substr(0, 10))
+const customerName = ref('')
 
 const formatDateIndo = (dateStr) => {
   if (!dateStr) return ''
@@ -193,6 +201,7 @@ onMounted(() => {
     const parsed = JSON.parse(saved)
     storeName.value = parsed.storeName
     storeAddress.value = parsed.storeAddress || ''
+    customerName.value = parsed.customerName || ''
     transactionDate.value = parsed.transactionDate
     products.value = parsed.products.map(p => ({
       ...p,
@@ -210,6 +219,7 @@ watch([storeName, storeAddress, transactionDate, products], () => {
   const data = {
     storeName: storeName.value,
     storeAddress: storeAddress.value,
+    customerName: customerName.value,
     transactionDate: transactionDate.value,
     products: products.value.map(p => ({ name: p.name, qty: p.qty, price: p.price }))
   }
